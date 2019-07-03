@@ -17,7 +17,6 @@ const {Item:FormItem}=Form
 
 class ContactUs extends PureComponent{
  
-
   render(){
     const { className } = this.props
     const { route:{routes=[]}={} } = this.props
@@ -30,19 +29,19 @@ class ContactUs extends PureComponent{
           <Card
             title="Contact Us"
           >
-            <Row type="flex">
-              <h4>Phone:</h4><span>+64 9 3099925</span>
+            <Row type="flex" className='info-row'>
+              <h6>Phone:</h6><span>+64 9 3099925</span>
             </Row>
-            <Row type="flex">
-              <h4>Fax:</h4><span>+64 9 3099925</span>
+            <Row type="flex" className='info-row'>
+              <h6>Fax:</h6><span>+64 9 3099925</span>
             </Row>
-            <Row type="flex">
-              <h4>Postal Address:</h4><span>PO Box 105805, Auckland City 1143, New Zealand</span>
+            <Row type="flex" className='info-row'>
+              <h6>Postal Address:</h6><span>PO Box 105805, Auckland City 1143, New Zealand</span>
             </Row>
-            <Row type="flex">
-              <h4>Physical Address:</h4><span>1A/6 Viaduct Harbour Ave, Auckland 1010, New Zealand</span>
+            <Row type="flex" className='info-row' style={{marginBottom:30}}>
+              <h6>Physical Address:</h6><span>1A/6 Viaduct Harbour Ave, Auckland 1010, New Zealand</span>
             </Row>
-            <ContactUsForm />
+            <ContactUsForm  />
           </Card>
         </Col>
       </Row>
@@ -51,6 +50,13 @@ class ContactUs extends PureComponent{
   }
 }
 export default styled(ContactUs)`
+.info-row h6{
+  margin:0;
+}
+.info-row {
+  padding:10px 0px;
+  align-items:center;
+}
 .px-3{
   padding-right:calc(var(--spacer));
   padding-left:calc(var(--spacer));

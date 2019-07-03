@@ -13,8 +13,9 @@ import { getCssStr } from "../imports/lib/css/getAntCss"
 import lessToCss from '../imports/lib/css/lessToCss'
 import styled from 'styled-components'
 
+console.log(Meteor.absolutePath,'rootPath')
 const Loading=()=>{
-  return(<p>Loading 222</p>)
+  return(<p>Loading</p>)
 }
 Meteor.startup(
   ()=>{
@@ -42,9 +43,10 @@ const App = Loadable.Map({
     onPageLoad(async(sink) => {
       const sheet = new ServerStyleSheet();
       const context = {};
-      const mainStyle = getCssStr({path:`${process.env['PWD']}/client/main.css`});
+      // const mainStyle = getCssStr({path:`${process.env['PWD']}/client/main.css`});
       // const antStyle=getCssStr({path:`${process.env['PWD']}/node_modules/antd/lib/style/index.css`});
-         const antStyle=getCssStr({path:`${process.env['PWD']}/node_modules/antd/dist/antd.min.css`});
+      // const antStyle=getCssStr({path:`${process.env['PWD']}/public/css/antd.min.css`});
+      const antStyle=await Assets.getText('css/antd.min.css')
       const StyledApp = styled((props)=>{
         const {className} = props
         return (
@@ -52,7 +54,8 @@ const App = Loadable.Map({
             <App />
           </StaticRouter>
         )
-      })`${mainStyle}`
+      })``
+      // sink.appendToHead(`<link rel=""stylesheet"" type="text/css" href="${Meteor.absoluteUrl("/css/antd.min.css")}">`);
       sink.appendToHead(`<style>${antStyle}</style>`);
         sink.renderIntoElementById('app',sheet.interleaveWithNodeStream(renderToNodeStream(sheet.collectStyles(
           <StyledApp />

@@ -4,7 +4,6 @@ const routers ={
     title:'user',
     path: '/admin',
     component:loadComp({
-      test:'admin',
       component:()=>import('./views/Index'),
       initData:()=>{
         if(Meteor.isClient){
@@ -19,6 +18,19 @@ const routers ={
       }
     }),
     routes:[
+      {
+        title:'Settings',
+        path: '/admin/settings',
+        routes:[
+          {
+            title:'Site Settings',
+            path: '/admin/settings/site',
+            component:loadComp({
+              component:()=>import('./views/SiteSettings')
+            })
+          }
+        ]
+      }
     ]
 }
 

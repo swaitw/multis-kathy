@@ -144,7 +144,7 @@ class SlateEditor extends Component{
   }
 
   onClickStyle = (event,type,newStyle,options) =>{
-    
+    console.log(type,newStyle,'textIndent')
     if(event){
       event.preventDefault()
     }
@@ -169,6 +169,7 @@ class SlateEditor extends Component{
         }
         break;
       case 'textIndent':
+        
         value.blocks.some(node=>{
           const style=node.data.get('style')
           let textIndent='2rem'
@@ -192,6 +193,21 @@ class SlateEditor extends Component{
             })
           }
         })
+        break
+      case 'align-left':
+      case 'align-center':
+      case 'align-right':
+      case 'align-justify':
+        const setAlign=()=>{
+          value.blocks.some((block)=>{
+            const { data,key } = block
+            const style=data.get('style')
+            editor.setNodeByKey(key,{
+              data:data.set('style',{...style,...newStyle})
+            })
+          })
+        }
+        setAlign()
         break
       default:
        const { selection:{anchor,focus}={}} =value
@@ -303,6 +319,7 @@ class SlateEditor extends Component{
         break;
       case 'insertLink':
         insertLink(editor,options)
+        break;
       case 'insert-table':
         insertTable(editor,options)
         break;
@@ -379,6 +396,7 @@ class SlateEditor extends Component{
         blockProps.style=style
       }
     }
+    const key = attributes['data-key']
     switch (node.type) {
       case 'block-quote':
         return <blockquote {...attributes} {...blockProps}>{children}</blockquote>
@@ -401,7 +419,6 @@ class SlateEditor extends Component{
       case 'bulleted-list':
           return <ul {...attributes} {...blockProps}>{children}</ul>
       case 'table-container':
-          const key = attributes['data-key']
           blockProps.className=`table-container ${blockProps.className||''}`
         return <Popover 
                   placement="top" 
@@ -471,6 +488,12 @@ class SlateEditor extends Component{
         </Fragment>
       case 'section':
         return <section {...attributes} {...blockProps}>{children}</section>
+      case 'ul':
+        return <ul {...attributes} {...blockProps}>{children}</ul>
+      case 'ol':
+        return <ol {...attributes} {...blockProps}>{children}</ol>
+      case 'li':
+        return <li {...attributes} {...blockProps}>{children}</li>
       case 'paragraph':
         return <p {...attributes} {...blockProps}>{children}</p>
       case 'img':

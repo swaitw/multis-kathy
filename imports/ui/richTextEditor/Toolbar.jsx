@@ -386,7 +386,7 @@ const renderStyleButton=({type,icon,onClickStyle=()=>{},text,style,hasStyle,curr
   return(
     <Button
       type={status()?"primary":"dashed"}
-      onMouseDown={event => onClickStyle(event, type,style)}
+      onMouseDown={event => onClickStyle(event, type,style||{})}
     >
       {
         icon&&<FontAwesomeIcon icon={icon}  />

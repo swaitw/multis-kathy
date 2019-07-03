@@ -2,7 +2,10 @@ import React, {PureComponent} from 'react'
 import {
   Form, 
   Input,
-  Card
+  Card,
+  Button,
+  Row,
+  message
 } from 'antd'
 
 const { Item:FormItem } = Form
@@ -46,7 +49,16 @@ class ContactUsForm extends PureComponent{
             }
           </FormItem>
         </Form>
-        
+        <Row type='flex' justify="end">
+          <Button type='primary' onClick={()=>{
+            message.config({
+              top:'40%'
+            })
+            message.loading('Sending...').then(()=>{
+              message.success('Success')
+            })
+          }}>Submit</Button>
+        </Row>
       </Card>
     )
   }

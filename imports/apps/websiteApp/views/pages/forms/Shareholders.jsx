@@ -6,18 +6,65 @@ import {
   Row,
   Col,
   Checkbox,
-  InputNumber
+  InputNumber,
+  Button
 } from 'antd'
 const { Item:FormItem} = Form
 
 const Shareholders =(props)=>{
-  const { form:{getFieldDecorator},shareholders=[]} = props
+  const { form:{getFieldDecorator,getFieldValue,resetFields},shareholders=[],issueSharePrice,title="Shareholders of the proposed company",isMultiStep=true} = props
   if(shareholders.length===0){
     shareholders.push({})
   }
+  const updateShareholdersNumber=()=>{
+    const { updateNumber=()=>{},showConfirm=()=>{} } = props
+    const currentNumber = parseInt(getFieldValue('numberOfShareholders')||0)
+    if(currentNumber!==shareholders.length){
+      const status = updateNumber(currentNumber,'shareholders')
+      if(!status){
+        showConfirm('updateShareholdersNumber')
+      }
+    }
+  }
+
+  const clearData=(i,isDelete)=>()=>{
+    const { clearData=()=>{} } = props
+    if(!isDelete&&Object.keys(shareholders[i]).length===0){
+      resetFields([
+        `shareholders[${i}].lname`,
+        `shareholders[${i}].fname`,
+        `shareholders[${i}].address.street`,
+        `shareholders[${i}].address.area`,
+        `shareholders[${i}].address.city`,
+        `shareholders[${i}].address.country`,
+        `shareholders[${i}].email`,
+        `shareholders[${i}].isShareholder`,
+        `shareholders[${i}].ird`,
+        `shareholders[${i}].numberOfShares`,
+        `shareholders[${i}].classOfShares`,
+      ])
+    }
+    clearData('shareholders',i,isDelete)
+  }
+  const handleSave = ()=>{
+    if(!isMultiStep){
+      const { handleSave=()=>{},form:{validateFields}}= props
+      validateFields((err,values)=>{
+        if(!err){
+          handleSave(values)
+        }
+      })
+    }
+  }
+  const extraProps ={}
+  if(!isMultiStep){
+    extraProps.extra=<Button onClick={handleSave} type='primary'>Save</Button>
+  }
+
   return(
     <Card
-      title="Shareholders of the proposed company"
+      title={title}
+      {...extraProps}
     > 
       <Row type="flex">
         <Col className="pr-2" span={6}>
@@ -31,7 +78,9 @@ const Shareholders =(props)=>{
         <Col span={18}>
           <FormItem>
             {
-              getFieldDecorator('issueSharePrice')(
+              getFieldDecorator('issueSharePrice',{
+                initialValue:issueSharePrice||''
+              })(
                 <InputNumber
                   formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                   parser={value => value.replace(/\$\s?|(,*)/g, '')}
@@ -40,19 +89,31 @@ const Shareholders =(props)=>{
             }
           </FormItem>
           <FormItem>
-            {
-              getFieldDecorator('numberOfShareholders')(
-                <InputNumber />
-              )
-            }
+            <div>
+              {
+                getFieldDecorator('numberOfShareholders',{
+                  initialValue:shareholders.length
+                })(
+                  <InputNumber />
+                )
+              }
+              <Button onClick={updateShareholdersNumber}>Update</Button>
+            </div>
           </FormItem>
         </Col>
       </Row>
       {
         shareholders.map((director,i)=>{
+          const { address={},fname,lname,ird,numberOfShares,classOfShares,isOverseas} = director
           return(
             <Row key={`shareholders-${i+1}`}>
-              <h4>{`Shareholder ${i+1}`}</h4>
+              <div className='flex justify-between'>
+                <h4>{`Shareholder ${i+1}`}</h4>
+                <div>
+                  <Button size='small' type='danger' onClick={clearData(i)}>Clear Data</Button>
+                  <Button size='small' type='danger' onClick={clearData(i,true)}>Delete</Button>
+                </div>
+              </div>
               <Row type="flex">
                 <Col className="pr-2" span={6}>
                   <FormItem>
@@ -65,14 +126,18 @@ const Shareholders =(props)=>{
                 <Col span={18}>
                   <FormItem>
                     {
-                      getFieldDecorator(`shareholders[${i}].lname`)(
+                      getFieldDecorator(`shareholders[${i}].lname`,{
+                        initialValue:lname||''
+                      })(
                         <Input />
                       )
                     }
                   </FormItem>
                   <FormItem>
                     {
-                      getFieldDecorator(`shareholders[${i}].fname`)(
+                      getFieldDecorator(`shareholders[${i}].fname`,{
+                        initialValue:fname||''
+                      })(
                         <Input />
                       )
                     }
@@ -89,7 +154,9 @@ const Shareholders =(props)=>{
                 <Col span={18}>
                   <FormItem>
                     {
-                      getFieldDecorator(`shareholders[${i}].address.street`)(
+                      getFieldDecorator(`shareholders[${i}].address.street`,{
+                        initialValue:address.street||''
+                      })(
                         <Input 
                           placeholder="Street"
                         />
@@ -98,7 +165,9 @@ const Shareholders =(props)=>{
                   </FormItem>
                   <FormItem>
                     {
-                      getFieldDecorator(`shareholders[${i}].address.city`)(
+                      getFieldDecorator(`shareholders[${i}].address.city`,{
+                        initialValue:address.city||''
+                      })(
                         <Input 
                           placeholder="City"
                         />
@@ -107,7 +176,9 @@ const Shareholders =(props)=>{
                   </FormItem>
                   <FormItem>
                     {
-                      getFieldDecorator(`shareholders[${i}].address.area`)(
+                      getFieldDecorator(`shareholders[${i}].address.area`,{
+                        initialValue:address.area||''
+                      })(
                         <Input 
                           placeholder="Area"
                         />
@@ -116,7 +187,9 @@ const Shareholders =(props)=>{
                   </FormItem>
                   <FormItem>
                     {
-                      getFieldDecorator(`shareholders[${i}].address.country`)(
+                      getFieldDecorator(`shareholders[${i}].address.country`,{
+                        initialValue:address.country||''
+                      })(
                         <Input 
                           placeholder="Country"
                         />
@@ -135,7 +208,9 @@ const Shareholders =(props)=>{
                 <Col span={18}>
                   <FormItem>
                     {
-                      getFieldDecorator(`shareholders[${i}].ird`)(
+                      getFieldDecorator(`shareholders[${i}].ird`,{
+                        initialValue:ird||''
+                      })(
                         <Input />
                       )
                     }
@@ -157,7 +232,9 @@ const Shareholders =(props)=>{
                 <Col span={18}>
                   <FormItem>
                     {
-                      getFieldDecorator(`shareholders[${i}].numberOfShares`)(
+                      getFieldDecorator(`shareholders[${i}].numberOfShares`,{
+                        initialValue:numberOfShares||''
+                      })(
                         <InputNumber />
                       )
                     }
@@ -165,7 +242,7 @@ const Shareholders =(props)=>{
                   <FormItem>
                     {
                       getFieldDecorator(`shareholders[${i}].classOfShares`,{
-                        initialValue:"Ordinary"
+                        initialValue:classOfShares||''
                       })(
                         <Input />
                       )
@@ -173,7 +250,9 @@ const Shareholders =(props)=>{
                   </FormItem>
                   <FormItem>
                     {
-                      getFieldDecorator(`shareholders[${i}].isOverseas`)(
+                      getFieldDecorator(`shareholders[${i}].isOverseas`,{
+                        initialValue:isOverseas||''
+                      })(
                         <Checkbox>Check if this shareholder is overseas</Checkbox>
                       )
                     }

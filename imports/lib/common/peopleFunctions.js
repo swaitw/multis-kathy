@@ -99,9 +99,7 @@ export function getAge(dob){
     }else{
       days = parseInt(moment(dob).daysInMonth())-parseInt(birthDay)+parseInt(currentDay)
     }
-    // console.log(years,
-      days,
-      months,'typeof dob')
+
     return {
       years,
       days,

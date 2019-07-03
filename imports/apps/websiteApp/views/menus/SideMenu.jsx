@@ -23,45 +23,45 @@ const menus = [
       },
       {
         title:"Overseas Consent and Identity Verification",
-        path:'/products'
+        path:'/information/overseas-consent-and-identity-verification'
       },
       {
         title:"Company Folder",
-        path:'/products'
+        path:'/information/company-folder'
       },
       {
         title:"Companies Guide",
-        path:'/products'
+        path:'/information/company-guide'
       },  
       {
         title:"Company Names",
-        path:'/products'
+        path:'/information/company-names'
       },
       {
         title:"Partnership Business Structure",
-        path:'/products'
+        path:'/information/partnership-business-structure'
       },
       {
         title:"Company Business Structure",
-        path:'/products'
+        path:'/information/company-business-structure'
       },
       {
         title:"Statutory Obligations of Companies and their Directors",
-        path:'/products'
+        path:'/information/statutory-obligations-of-companies-and-their-directors'
       },
     ]
   },
   {
-    title:"Disclaimer",
-    path:'/products'
+    path:'disclaimer',
+    title:'Disclaimer',
   },
   {
-    title:"Privacy",
-    path:'/contact-us'
+    path:'privacy',
+    title:'Privacy',
   },
   {
-    title:"Refund Policy",
-    path:'/contact-us'
+    path:'refund-policy',
+    title:'Refund Policy',
   },
   {
     title:"ContactUs",

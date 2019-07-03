@@ -4,35 +4,65 @@ import {
   Input,
   Card,
   Row,
-  Col
+  Col,
+  Button
 } from 'antd'
+import { Meteor } from 'meteor/meteor';
 const { Item:FormItem} = Form
 
 const PersonalDeatil =(props)=>{
-  const { form:{getFieldDecorator}} = props
+  const { form:{getFieldDecorator,getFieldValue,setFieldsValue},person={}, showConfirm=()=>{},title='Your details',isMultiStep=true} = props
+  
+  const handleSave = ()=>{
+    if(!isMultiStep){
+      const { handleSave=()=>{},form:{validateFields}}= props
+      validateFields((err,values)=>{
+        if(!err){
+          handleSave(values)
+        }
+      })
+    }
+  }
+  console.log(props,'person')
+  const { address={} } = person
+  const handleCheckEmail = ()=>{
+    const email = getFieldValue('person.email')
+    Meteor.call('getUserIdByEmail',email,{upsert:false},(err,userId)=>{
+      if(!err&&userId){
+        showConfirm('emailCheck',{userId})
+        setFieldsValue({'person.email':''})
+      }
+    })
+  }
+  const extraProps ={}
+  if(!isMultiStep){
+    extraProps.extra=<Button onClick={handleSave} type='primary'>Save</Button>
+  }
   return(
     <Card
-      title="Your details"
+      bordered={false}
+      title={title}
+      {...extraProps}
     > 
       <Row type="flex">
         <Col className="pr-2">
           <FormItem>
-            <span>Last Name:</span>
+            <span>Last Name <span style={{color:'red'}}>*</span>:</span>
           </FormItem>
           <FormItem>
-            <span>First Name:</span>
+            <span>First Name<span style={{color:'red'}}>*</span>:</span>
           </FormItem>
           <FormItem>
-            <span>E-mail:</span>
+            <span>E-mail<span style={{color:'red'}}>*</span>:</span>
           </FormItem>
           <FormItem>
-            <span>Street:</span>
+            <span>Street<span style={{color:'red'}}>*</span>:</span>
           </FormItem>
           <FormItem>
-            <span>City:</span>
+            <span>City<span style={{color:'red'}}>*</span>:</span>
           </FormItem>
           <FormItem>
-            <span>Phone:</span>
+            <span>Phone<span style={{color:'red'}}>*</span>:</span>
           </FormItem>
           <FormItem>
             <span>Phone2:</span>
@@ -44,56 +74,110 @@ const PersonalDeatil =(props)=>{
         <Col span={18}>
           <FormItem>
             {
-              getFieldDecorator('lname')(
+              getFieldDecorator('person.lname',{
+                initialValue:person.lname||'',
+                rules:[
+                  {
+                    required:true,
+                    message:'Please Enter your Last Name'
+                  }
+                ]
+              })(
                 <Input />
               )
             }
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('fname')(
+              getFieldDecorator('person.fname',{
+                initialValue:person.fname||'',
+                rules:[
+                  {
+                    required:true,
+                    message:'Please Enter your First Name'
+                  }
+                ]
+              })(
                 <Input />
               )
             }
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('email')(
+              getFieldDecorator('person.email',{
+                initialValue:person.email||'',
+                rules:[
+                  {
+                    required:true,
+                    message:'Please Enter your email'
+                  }
+                ]
+              })(
+                <Input 
+                  onBlur={handleCheckEmail}
+                />
+              )
+            }
+          </FormItem>
+          <FormItem>
+            {
+              getFieldDecorator('person.address.street',{
+                initialValue:address.street||'',
+                rules:[
+                  {
+                    required:true,
+                    message:'Please Enter your street'
+                  }
+                ]
+              })(
                 <Input />
               )
             }
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('address.street')(
+              getFieldDecorator('person.address.city',{
+                initialValue:address.city||'',
+                rules:[
+                  {
+                    required:true,
+                    message:'Please Enter your city'
+                  }
+                ]
+              })(
                 <Input />
               )
             }
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('address.city')(
+              getFieldDecorator('person.phone',{
+                initialValue:person.phone||'',
+                rules:[
+                  {
+                    required:true,
+                    message:'Please Enter your phone'
+                  }
+                ]
+              })(
                 <Input />
               )
             }
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('phone')(
+              getFieldDecorator('person.phone2',{
+                initialValue:person.phone2||'',
+              })(
                 <Input />
               )
             }
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('phone2')(
-                <Input />
-              )
-            }
-          </FormItem>
-          <FormItem>
-            {
-              getFieldDecorator('fax')(
+              getFieldDecorator('person.fax',{
+                initialValue:person.fax||'',
+              })(
                 <Input />
               )
             }

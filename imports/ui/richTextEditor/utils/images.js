@@ -1,7 +1,9 @@
+import { Range ,Data} from 'slate'
 const insertImage = (editor,options) =>{
   const { value } = editor
   const { document } = value
-  const index =  document.getNode('0').nodes.size
+  console.log(document,'document')
+  const index =  document.nodes.size
   editor.insertBlock({
     type:'paragraph',
     data:{

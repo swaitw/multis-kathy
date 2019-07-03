@@ -1,8 +1,9 @@
 import Loadable from 'react-loadable'
-import React from 'react'
-const loadComp = ({component,initData,test=""})=>{
+import React,{Fragment} from 'react'
+import { Spin } from 'antd';
+const loadComp = ({component,initData})=>{
   const Loading=()=>{
-    return(<p>Loading{test}</p>)
+    return(<Spin style={{position:"absolute",bottom:'50%',left:'50%',transform: 'translateX(-50%)'}}/>)
   }
   if(Meteor.isClient){
     return Loadable({
@@ -10,11 +11,14 @@ const loadComp = ({component,initData,test=""})=>{
       loading:Loading,
     })
   }
+  const loader={
+    Comp:component
+  }
+  if(initData){
+    loader.initData=initData
+  }
   return Loadable.Map({
-    loader:{
-      Comp:component,
-      initData,
-    },
+    loader,
     loading:Loading,
     render(loaded,props){
       let Comp = loaded.Comp.default

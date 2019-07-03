@@ -22,6 +22,7 @@ const toJsStyle=(styles)=>{
     }
   }
   const styleObj={}
+  console.log(styles,'styles')
   const styleArry = styles.split(";")
   styleArry.forEach((item)=>{
     if(item&&item!==undefined){

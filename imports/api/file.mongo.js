@@ -1,13 +1,89 @@
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import fs from 'fs'
+import { Blogs } from './blog.mongo';
 
 
-const bathPath = `${process.env['PWD']}/packages`
+const bathPath = `${process.env['PWD']}/.uploads`
 export const Files = new Mongo.Collection('files');
 
+const initData =[
+  {
+    slug:'information',
+    title:'Information',
+  },
+  {
+    slug:'offline-company-formation',
+    title:'Offline Company Formation',
+  },
+  {
+    slug:'7-reasons-to-choose-company-structure-for-your-business',
+    title:'7 reasons to choose company structure for your business',
+  },
+  {
+    slug:'overseas-consent-and-identity-verification',
+    title:'Overseas Consent and Identity Verification',
+  },
+  {
+    slug:'company-folder',
+    title:'Company Folder',
+  },
+  {
+    slug:'company-guide',
+    title:'Company Guide',
+  },
+  {
+    slug:'company-names',
+    title:'Company Names',
+  },
+  {
+    slug:'partnership-business-structure',
+    title:'Partnership Business Structure',
+  },
+  {
+    slug:'company-business-structure',
+    title:'Company Business Structure',
+  },
+  {
+    slug:'statutory-obligations-of-companies-and-their-directors',
+    title:'Statutory Obligations of Companies and their Directors',
+  },
+  {
+    slug:'disclaimer',
+    title:'Disclaimer',
+  },
+  {
+    slug:'privacy',
+    title:'Privacy',
+  },
+  {
+    slug:'refund-policy',
+    title:'Refund Policy',
+  }
+]
 
 if(Meteor.isServer){
+
+  Meteor.startup(()=>{
+    init()
+    initData.forEach((blog)=>{
+      if(Blogs.findOne({slug:blog.slug})){
+        return
+      }
+      Blogs.insert({
+        createAt:new Date(),
+        ...blog
+      })
+    })
+  })
+  function init(){
+    if(!fs.existsSync(bathPath)){
+      fs.mkdirSync(`${bathPath}`)
+      fs.mkdirSync(`${bathPath}/temp`)
+    }else if(!fs.existsSync(`${bathPath}/temp`)){
+      fs.mkdirSync(`${bathPath}/temp`)
+    }
+  }
 
   async function addFile(fileData){
     const fileId = await Files.insert({

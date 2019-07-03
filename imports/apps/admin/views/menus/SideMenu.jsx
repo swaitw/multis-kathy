@@ -23,7 +23,7 @@ const SideMenu = (props)=>{
   const selectedKeys = matchRoutes(routes,location.pathname).map((route)=>{
     return route.match.path
   })
-  console.log(selectedKeys,'admin side Menu 111111111111111')
+  console.log(routes,'admin side Menu 111111111111111')
   return(
     <div className={`${className}`}>
       <Menu 
@@ -33,10 +33,9 @@ const SideMenu = (props)=>{
       >
         {
           routes.filter((menu)=>(menu.show!==false)).map((menu)=>{
-            const { title,path,routes:subRoutes=[] } = menu
+            const { title,path,routes:subRoutes } = menu
             
             if(subRoutes&&Array.isArray(subRoutes)){
-              
               return(
                 <SubMenu
                   key={path}
@@ -58,6 +57,7 @@ const SideMenu = (props)=>{
                 </SubMenu>
               )
             }
+            console.log(title,'title')
             return(
               
                 <MenuItem key={path}>

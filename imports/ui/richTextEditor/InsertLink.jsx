@@ -51,6 +51,7 @@ class InsertLink extends PureComponent{
 
   render(){
     const { form:{getFieldDecorator},block:{href, target}={}} =this.props
+    console.log(this.props,'InsertLink')
     return(
       <Card>
         <Form>

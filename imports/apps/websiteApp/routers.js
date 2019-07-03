@@ -5,14 +5,6 @@ const routers ={
     path: '/',
     component:loadComp({
       component:()=>import('./views/Index'),
-      initData:()=>{
-        return new Promise((res,rej)=>{
-          const links= Meteor.call('getLinks')
-          res({
-            links
-          })
-        })
-      }
     }),
     routes:[
       {
@@ -21,14 +13,6 @@ const routers ={
         exact:true,
         component:loadComp({
           component:()=>import('./views/pages/HomePage'),
-          initData:()=>{
-            return new Promise((res,rej)=>{
-              const links= Meteor.call('getLinks')
-              res({
-                links
-              })
-            })
-          }
         }),
       },
       {
@@ -37,14 +21,6 @@ const routers ={
         exact:true,
         component:loadComp({
           component:()=>import('./views/pages/HomePage'),
-          initData:()=>{
-            return new Promise((res,rej)=>{
-              const links= Meteor.call('getLinks')
-              res({
-                links
-              })
-            })
-          }
         }),
       },
       {
@@ -53,14 +29,6 @@ const routers ={
         exact:true,
         component:loadComp({
           component:()=>import('./views/pages/About'),
-          initData:()=>{
-            return new Promise((res,rej)=>{
-              const links= Meteor.call('getLinks')
-              res({
-                links
-              })
-            })
-          }
         }),
       },
       {
@@ -69,14 +37,6 @@ const routers ={
         exact:true,
         component:loadComp({
           component:()=>import('./views/pages/ContactUs'),
-          initData:()=>{
-            return new Promise((res,rej)=>{
-              const links= Meteor.call('getLinks')
-              res({
-                links
-              })
-            })
-          }
         }),
       },
       {
@@ -84,14 +44,6 @@ const routers ={
         path:'/information',
         component:loadComp({
           component:()=>import('./views/pages/InfoPage'),
-          initData:()=>{
-            return new Promise((res,rej)=>{
-              const links= Meteor.call('getLinks')
-              res({
-                links
-              })
-            })
-          }
         }),
         routes:[
           {
@@ -116,14 +68,6 @@ const routers ={
             exact:true,
             component:loadComp({
               component:()=>import('./views/pages/BlogPage'),
-              initData:()=>{
-                return new Promise((res,rej)=>{
-                  const links= Meteor.call('getLinks')
-                  res({
-                    links
-                  })
-                })
-              }
             }),
           }
         ]
@@ -134,14 +78,6 @@ const routers ={
         exact:true,
         component:loadComp({
           component:()=>import('./views/pages/Products'),
-          initData:()=>{
-            return new Promise((res,rej)=>{
-              const links= Meteor.call('getLinks')
-              res({
-                links
-              })
-            })
-          }
         }),
       },
       {
@@ -150,17 +86,16 @@ const routers ={
         exact:true,
         component:loadComp({
           component:()=>import('./views/pages/ResisterCompany'),
-          initData:()=>{
-            return new Promise((res,rej)=>{
-              const links= Meteor.call('getLinks')
-              res({
-                links
-              })
-            })
-          }
         }),
+      },
+      {
+        title:'user',
+        path: '/:slug',
+        component:loadComp({
+          component:()=>import('./views/pages/DefaultPage'),
+        })
       }
-    ] 
+    ]
 }
 
 export default routers

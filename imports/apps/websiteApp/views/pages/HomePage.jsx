@@ -34,12 +34,12 @@ class HomePage extends PureComponent{
             <Row className="w-100 flex">
               <Col span={12} className="flex justify-center">
                 <Row>
-                  <h1 style={{fontSize:'1.5rem'}}>Register a company</h1>
+                  <h2>Register a company</h2>
                   {
                     this.infoList.map((info)=>{
                       return(
                         <Row key={info} type="flex" align="middle" style={{fontSize:'1rem',padding:'0.25rem 0px'}}>
-                          <Icon type="check" className="pr-1"/><h4 style={{margin:0,padding:0}}>{info}</h4>
+                          <Icon type="check" className="pr-1"/><h6 style={{margin:0,padding:0}}>{info}</h6>
                         </Row>
                       )
                     })
@@ -48,10 +48,10 @@ class HomePage extends PureComponent{
               </Col>
               <Col span={12} className="flex align-item-end">
                 <Row>
-                  <Button type="primary" >Register A Company</Button>
+                  <Button type="primary" style={{height:'auto'}}><h3 style={{margin:0,color:'#fff'}}>Register A Company</h3></Button>
                   <Row type="flex" align="middle">
                     <Col>
-                      <h1>$289</h1>
+                      <h2>$289</h2>
                     </Col>
                     <Col>
                       <ul>
@@ -66,8 +66,8 @@ class HomePage extends PureComponent{
           </Row>
         </div>
         <div className="full-row">
-          <Row className="px-15 py-3 mb-3 flex-nowrap check-available" type="flex" justify="center">
-            <h1>Company name available?</h1>
+          <Row className="px-15 py-3 mb-3 flex-nowrap check-available" type="flex" justify="center" align='middle'>
+            <h3 style={{margin:0,paddingRight:10}}>Company name available?</h3>
             <Input style={{flex:'0 0 50%'}}/><Button>Check Now</Button>
           </Row>
         </div>

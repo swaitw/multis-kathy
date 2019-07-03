@@ -1,3 +1,4 @@
+import { Inline } from 'slate'
 const insertLink = (editor,options={})=>{
   const { value } = editor
   const { document } = value

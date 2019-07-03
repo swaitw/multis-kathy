@@ -8,16 +8,34 @@ import {
   InputNumber,
   Radio,
   Select,
-  Checkbox
+  Checkbox,
+  Button
 } from 'antd'
 const { Item:FormItem} = Form
 const {Group:RadioGroup} = Radio;
 const {Option} = Select
 const CompanyDetails =(props)=>{
-  const { form:{getFieldDecorator}} = props
+  const { form:{getFieldDecorator},company={},title='Company details',isMultiStep=true} = props
+  const { registeredAddress={},serviceAddress={},postAddress={},email={} } = company
+  const handleSave = ()=>{
+    if(!isMultiStep){
+      const { handleSave=()=>{},form:{validateFields}}= props
+      validateFields((err,values)=>{
+        if(!err){
+          handleSave(values)
+        }
+      })
+    }
+  }
+  const extraProps ={}
+  if(!isMultiStep){
+    extraProps.extra=<Button onClick={handleSave} type='primary'>Save</Button>
+  }
   return(
     <Card
+      bordered={false}
       title="Company Details"
+      {...extraProps}
     > 
       <h4>Company Names:</h4>
       <Row type="flex">
@@ -35,21 +53,27 @@ const CompanyDetails =(props)=>{
         <Col span={18}>
           <FormItem>
             {
-              getFieldDecorator('preferredName')(
+              getFieldDecorator('company.preferredName',{
+                initialValue:company.preferredName||''
+              })(
                 <Input />
               )
             }
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('secondName')(
+              getFieldDecorator('company.secondName',{
+                initialValue:company.secondName||''
+              })(
                 <Input />
               )
             }
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('thirdName')(
+              getFieldDecorator('company.thirdName',{
+                initialValue:company.thirdName||''
+              })(
                 <Input />
               )
             }
@@ -78,21 +102,27 @@ const CompanyDetails =(props)=>{
         <Col span={18}>
           <FormItem>
             {
-              getFieldDecorator('numberOfDirectors')(
+              getFieldDecorator('company.numberOfDirectors',{
+                initialValue:company.numberOfDirectors||''
+              })(
                 <InputNumber />
               )
             }
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('numberOfShareholders')(
+              getFieldDecorator('company.numberOfShareholders',{
+                initialValue:company.numberOfShareholders||''
+              })(
                 <InputNumber />
               )
             }
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('constitution')(
+              getFieldDecorator('company.constitution',{
+                initialValue:company.constitution||''
+              })(
                 <RadioGroup>
                   <Radio value="Standard">Standard</Radio>
                   <Radio value="None">None</Radio>
@@ -102,8 +132,8 @@ const CompanyDetails =(props)=>{
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('annualReturnMonth',{
-                initialValue:"Please Select"
+              getFieldDecorator('company.annualReturnMonth',{
+                initialValue:company.annualReturnMonth||'Please Select'
               })(
                 <Select>
                   <Option value="Please Select" disabled>Please Select</Option>
@@ -124,7 +154,10 @@ const CompanyDetails =(props)=>{
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('laqcCheck')(
+              getFieldDecorator('company.laqcCheck',{
+                initialValue:company.laqcCheck||true,
+                valuePropName:'checked'
+              })(
                 <Checkbox>do a check to verify a company can be become LAQC</Checkbox>
               )
             }
@@ -142,7 +175,9 @@ const CompanyDetails =(props)=>{
         <Col span={18}>
           <FormItem>
             {
-              getFieldDecorator('registeredAddress.street')(
+              getFieldDecorator('company.registeredAddress.street',{
+                initialValue:registeredAddress.street||''
+              })(
                 <Input 
                   placeholder="Street"
                 />
@@ -151,7 +186,9 @@ const CompanyDetails =(props)=>{
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('registeredAddress.city')(
+              getFieldDecorator('company.registeredAddress.city',{
+                initialValue:registeredAddress.city||''
+              })(
                 <Input 
                   placeholder="City"
                 />
@@ -160,7 +197,7 @@ const CompanyDetails =(props)=>{
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('registeredAddress.area')(
+              getFieldDecorator('company.registeredAddress.area')(
                 <Input 
                   placeholder="Area"
                 />
@@ -169,7 +206,9 @@ const CompanyDetails =(props)=>{
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('registeredAddress.country')(
+              getFieldDecorator('company.registeredAddress.country',{
+                initialValue:registeredAddress.country||''
+              })(
                 <Input 
                   placeholder="Country"
                 />
@@ -188,14 +227,19 @@ const CompanyDetails =(props)=>{
         <Col span={18}>
           <FormItem>
             {
-              getFieldDecorator('serviceAddress.isSame')(
+              getFieldDecorator('company.serviceAddress.isSame',{
+                initialValue:serviceAddress.isSame||false,
+                valuePropName:'checked'
+              })(
                 <Checkbox>Same as Registered Office or:</Checkbox>
               )
             }
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('serviceAddress.street')(
+              getFieldDecorator('company.serviceAddress.street',{
+                initialValue:serviceAddress.street||''
+              })(
                 <Input 
                   placeholder="Street"
                 />
@@ -204,7 +248,9 @@ const CompanyDetails =(props)=>{
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('serviceAddress.city')(
+              getFieldDecorator('company.serviceAddress.city',{
+                initialValue:serviceAddress.city||''
+              })(
                 <Input 
                   placeholder="City"
                 />
@@ -213,7 +259,9 @@ const CompanyDetails =(props)=>{
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('serviceAddress.area')(
+              getFieldDecorator('company.serviceAddress.area',{
+                initialValue:serviceAddress.area||''
+              })(
                 <Input 
                   placeholder="Area"
                 />
@@ -222,7 +270,9 @@ const CompanyDetails =(props)=>{
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('serviceAddress.country')(
+              getFieldDecorator('company.serviceAddress.country',{
+                initialValue:serviceAddress.country||''
+              })(
                 <Input 
                   placeholder="Country"
                 />
@@ -240,14 +290,19 @@ const CompanyDetails =(props)=>{
         <Col span={18}>
           <FormItem>
             {
-              getFieldDecorator('postAddress.isSame')(
+              getFieldDecorator('company.postAddress.isSame',{
+                initialValue:postAddress.isSame||false,
+                valuePropName:'checked'
+              })(
                 <Checkbox>Same as Registered Office or:</Checkbox>
               )
             }
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('postAddress.street')(
+              getFieldDecorator('company.postAddress.street',{
+                initialValue:postAddress.street||''
+              })(
                 <Input 
                   placeholder="Street"
                 />
@@ -256,7 +311,9 @@ const CompanyDetails =(props)=>{
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('postAddress.city')(
+              getFieldDecorator('company.postAddress.city',{
+                initialValue:postAddress.city||''
+              })(
                 <Input 
                   placeholder="City"
                 />
@@ -265,7 +322,9 @@ const CompanyDetails =(props)=>{
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('serviceAddress.area')(
+              getFieldDecorator('company.postAddress.area',{
+                initialValue:postAddress.area||''
+              })(
                 <Input 
                   placeholder="Area"
                 />
@@ -274,7 +333,9 @@ const CompanyDetails =(props)=>{
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('postAddress.country')(
+              getFieldDecorator('company.postAddress.country',{
+                initialValue:postAddress.country||''
+              })(
                 <Input 
                   placeholder="Country"
                 />
@@ -292,14 +353,17 @@ const CompanyDetails =(props)=>{
         <Col span={18}>
           <FormItem>
             {
-              getFieldDecorator('email.isSame')(
+              getFieldDecorator('company.email.isSame',{
+                initialValue:email.isSame||false,
+                valuePropName:'checked'
+              })(
                 <Checkbox>Same as Registered Office or:</Checkbox>
               )
             }
           </FormItem>
           <FormItem>
             {
-              getFieldDecorator('email')(
+              getFieldDecorator('company.email.address')(
                 <Input 
                   placeholder="Email"
                 />

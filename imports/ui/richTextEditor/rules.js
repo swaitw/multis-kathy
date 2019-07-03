@@ -11,6 +11,9 @@ const BLOCK_TAGS = {
   h5:'heading-five',
   h6:'heading-six',
   img:'img',
+  ul:'ul',
+  ol:'ol',
+  li:'li'
 }
 const MARK_TAGS = {
   em: 'italic',
@@ -28,7 +31,7 @@ const rules = [
   {
     deserialize(el, next) {
       const type = BLOCK_TAGS[el.tagName.toLowerCase()]
-      
+      console.log(type,'deserialize')
       if (type) {
         const {style,error} = toJsStyle(el.getAttribute('style'))
         const data ={
@@ -48,6 +51,7 @@ const rules = [
       }
     },
     serialize(obj, children) {
+      
       if (obj.object == 'block') {
         const blockProps ={}
         const isHolder = obj.data.get('isHolder')
@@ -64,6 +68,7 @@ const rules = [
         if(style){
           blockProps.style = style
         }
+        console.log(obj.type,'serialize')
         switch (obj.type) {
           case 'paragraph':
             return <p {...blockProps}>{children}</p>
@@ -100,6 +105,12 @@ const rules = [
           case 'table-container':
               blockProps.className=`table-container ${ blockProps.className? blockProps.className:''}`
               return <div {...blockProps}>{children}</div>
+          case 'ul':
+            return <ul {...blockProps}>{children}</ul>
+          case 'ol':
+            return <ol {...blockProps}>{children}</ol>
+          case 'li':
+            return <li {...blockProps}>{children}</li> 
           default :
             return <p {...blockProps}>{children}</p>
         }

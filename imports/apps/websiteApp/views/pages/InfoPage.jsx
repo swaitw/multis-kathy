@@ -21,11 +21,11 @@ class InfoPage extends PureComponent{
     const { className } = this.props
     const { route:{routes=[]}={} } = this.props
     return(
-      <Row className={className}>
+      <Row className={`overflow-hidden ${className}`}>
         <Col span={6} className="px-3 pt-5">
           <SideMenu />
         </Col>  
-        <Col span={18} className="px-3 pt-5">
+        <Col span={18} className="px-3 pt-5 overflow-auto">
           {renderRoutes(routes)}
         </Col>
       </Row>
@@ -34,6 +34,7 @@ class InfoPage extends PureComponent{
   }
 }
 export default styled(InfoPage)`
+display:flex;
 .px-3{
   padding-right:calc(var(--spacer));
   padding-left:calc(var(--spacer));
