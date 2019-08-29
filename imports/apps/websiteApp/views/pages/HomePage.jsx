@@ -1,13 +1,11 @@
 import React,{ PureComponent } from 'react';
 import styled from 'styled-components'
-import {
-  Row,
-  Col,
-  Icon,
-  Button,
-  Input,
-  Card
-} from 'antd'
+import Card from 'antd/lib/card';
+import Icon from 'antd/lib/icon';
+import Row from 'antd/lib/row';
+import Col from 'antd/lib/col';
+import Button from 'antd/lib/button';
+import Input from 'antd/lib/input';
 // import { getAntCsses } from '../../../../lib/css/getAntCss'
 // const css = getAntCsses(['row','grid','icon'])
 

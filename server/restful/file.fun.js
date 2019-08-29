@@ -4,7 +4,7 @@ import url from 'url'
 import querystring from 'querystring'
 import { Meteor } from 'meteor/meteor';
 import {Files} from '../../imports/api/file.mongo'
-const bathPath = `${process.env['PWD']}/packages`
+const bathPath = `${process.env['PWD']}/.uploads`
 async function downloadFileHandle(req, res, next){
   
   const { params:{id} } = req

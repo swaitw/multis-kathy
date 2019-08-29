@@ -1,12 +1,8 @@
 import React, { PureComponent, Fragment } from 'react'
-import {
-  Row,
-  Col,
-  Form,
-  Button,
-  Icon,
-  Steps
-} from 'antd'
+import Steps from 'antd/lib/steps';
+import Form from 'antd/lib/form';
+import Button from 'antd/lib/button';
+
 import styled from 'styled-components'
 import moment from 'moment';
 const { Step} = Steps

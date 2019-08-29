@@ -1,8 +1,5 @@
 import React, { useState, Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import {
-  Card, Button
-} from 'antd'
 import { Meteor } from 'meteor/meteor';
 import { PDFViewer,Document } from '@react-pdf/renderer';
 import DocumentLayout from './Document'

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Checkbox, Table,Card } from 'antd';
+import Card from 'antd/lib/card';
+import Table from 'antd/lib/table';
+import Checkbox from 'antd/lib/checkbox';
 
 const CategoriesCard = (props)=>{
   const { title,categories=[],onChange,blogCategories } =  props

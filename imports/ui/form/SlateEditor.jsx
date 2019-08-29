@@ -4,8 +4,9 @@ import { Value } from 'slate'
 import Plain from 'slate-plain-serializer'
 import { html as beautifyHtml } from 'js-beautify'
 if(Meteor.isClient){
-  import 'braft-editor/dist/index.css'
+  
 }
+import 'braft-editor/dist/index.css'
 import { toJsStyle } from '../../lib/css/stylesFuncs'
 import styled from 'styled-components'
 import { Meteor } from 'meteor/meteor';

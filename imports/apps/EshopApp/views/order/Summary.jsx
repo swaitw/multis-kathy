@@ -1,10 +1,8 @@
 import React from 'react';
-import {
-  Card,
-  Row,
-  Col,
-  Table
-} from 'antd'
+import Card from 'antd/lib/card';
+import Table from 'antd/lib/table';
+import Row from 'antd/lib/row';
+import Col from 'antd/lib/col';
 import OrderReview from '../../../websiteApp/views/pages/forms/OrderReview'
 
 const columns = [

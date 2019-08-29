@@ -1,13 +1,8 @@
 import React, { PureComponent, Fragment } from 'react';
 import moment from 'moment'
-import {
-  Card,
-  Tag,
-  Row,
-  Upload,
-  Icon,
-  Button,
-} from 'antd'
+import Upload from 'antd/lib/upload';
+import Icon from 'antd/lib/icon';
+import Button from 'antd/lib/button';
 import { Meteor } from 'meteor/meteor';
 import { sliceData, readFile } from '../../../lib/common/files'
 

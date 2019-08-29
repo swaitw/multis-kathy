@@ -1,5 +1,6 @@
 import React, { PureComponent} from 'react'
-import { Layout,Row} from 'antd'
+import Row from 'antd/lib/row';
+import Layout from 'antd/lib/layout';
 import { Meteor } from 'meteor/meteor';
 import styled from 'styled-components';
 import Header from './Header'

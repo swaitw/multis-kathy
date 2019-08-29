@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom'
 import { withTracker } from 'meteor/react-meteor-data'
-import {
-  Table, Button
-} from 'antd'
+import Table from 'antd/lib/table';
+import Button from 'antd/lib/button';
 import { Meteor } from 'meteor/meteor';
 import { Orders } from '../../../api/orders.mongon';
 import moment from 'moment';

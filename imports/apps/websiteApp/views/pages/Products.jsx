@@ -1,13 +1,8 @@
 import React, { PureComponent} from 'react';
-import {
-  Card,
-  Form,
-  Row,
-  Col,
-  Checkbox,
-  InputNumber,
-  Table
-} from 'antd'
+import Table from 'antd/lib/table';
+import Form from 'antd/lib/form';
+import Row from 'antd/lib/row';
+import Col from 'antd/lib/col';
 import { renderRoutes} from '../../../../lib/router/index'
 import styled from 'styled-components';
 import SideMenu from '../menus/SideMenu'

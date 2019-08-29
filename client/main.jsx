@@ -10,11 +10,21 @@ import { Meteor } from 'meteor/meteor';
 import App from '../imports/apps/App'
 onPageLoad(async sink => {
   // const App = (await import('../imports/apps/App')).default;
-  await Loadable.preloadAll()
+  try{
+    await Loadable.preloadAll()
+  }catch(err){
+
+  }
+  
+  // await Loadable.preloadReady()
+  // const antStyle=await Assets.getText('css/theme.css')
+  // sink.appendToHead(`<style>${antStyle}</style>`);
   ReactDOM.hydrate(
+    
     <BrowserRouter>
       <App routers={routers}/>
     </BrowserRouter>,
     document.getElementById('app')
   );
+  
 });

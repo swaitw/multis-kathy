@@ -1,9 +1,14 @@
 import React, { PureComponent} from 'react';
 import { Link } from 'react-router-dom'
 import Menu from 'antd/lib/menu';
+
 import styled from 'styled-components';
+import { Meteor } from 'meteor/meteor';
 const {Item:MenuItem} = Menu
 // const css = getAntCsses(['menu'])
+// if(Meteor.isClient){
+//   import 'antd/lib/menu/style/index'
+// }
 const menus = [
   {
     title:"Register a companyonline",

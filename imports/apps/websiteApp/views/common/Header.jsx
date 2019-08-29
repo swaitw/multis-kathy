@@ -1,9 +1,15 @@
 import React, { PureComponent} from 'react'
-import {Row,Col} from 'antd'
-import { Meteor } from 'meteor/meteor';
-import styled from 'styled-components';
+import Row from 'antd/lib/row'
+import Col from 'antd/lib/col'
+
 import PrimaryMenu from '../menus/PrimaryMenu'
 import Logo from './Logo'
+import { Meteor } from 'meteor/meteor';
+// if(Meteor.isClient){
+//   import 'antd/lib/row/style/index'
+//   import 'antd/lib/col/style/index'
+// }
+
 // import { getAntCsses } from '../../../../lib/css/getAntCss'
 // const css = getAntCsses(['row','col'])
 

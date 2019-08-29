@@ -1,12 +1,10 @@
 import React, { PureComponent } from 'react';
-import { 
-  Card,
-  Row,
-  Col,
-  Table,
-  Icon,
-  Tag
- } from 'antd';
+import Card from 'antd/lib/card';
+import Table from 'antd/lib/table';
+import Icon from 'antd/lib/icon';
+import Row from 'antd/lib/row';
+import Col from 'antd/lib/col';
+import Tag from 'antd/lib/tag';
  import { toMoneyStr } from '../../../../../lib/common/formatedText'
 
  const keyTotitle={

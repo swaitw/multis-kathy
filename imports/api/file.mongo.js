@@ -80,8 +80,14 @@ if(Meteor.isServer){
     if(!fs.existsSync(bathPath)){
       fs.mkdirSync(`${bathPath}`)
       fs.mkdirSync(`${bathPath}/temp`)
-    }else if(!fs.existsSync(`${bathPath}/temp`)){
-      fs.mkdirSync(`${bathPath}/temp`)
+      fs.mkdirSync(`${bathPath}/media`)
+    }else {
+      if(!fs.existsSync(`${bathPath}/temp`)){
+        fs.mkdirSync(`${bathPath}/temp`)
+      }
+      if(!fs.existsSync(`${bathPath}/media`)){
+        fs.mkdirSync(`${bathPath}/media`)
+      } 
     }
   }
 

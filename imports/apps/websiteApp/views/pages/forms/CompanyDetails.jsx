@@ -1,16 +1,14 @@
 import React, { PureComponent, Fragment } from 'react'
-import {
-  Form, 
-  Input,
-  Card,
-  Row,
-  Col,
-  InputNumber,
-  Radio,
-  Select,
-  Checkbox,
-  Button
-} from 'antd'
+import Card from 'antd/lib/card';
+import Input from 'antd/lib/input';
+import Form from 'antd/lib/form';
+import Row from 'antd/lib/row';
+import Col from 'antd/lib/col';
+import Button from 'antd/lib/button';
+import InputNumber from 'antd/lib/input-number';
+import Radio from 'antd/lib/radio';
+import Select from 'antd/lib/select';
+import Checkbox from 'antd/lib/checkbox';
 const { Item:FormItem} = Form
 const {Group:RadioGroup} = Radio;
 const {Option} = Select

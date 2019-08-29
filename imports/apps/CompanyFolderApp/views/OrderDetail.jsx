@@ -1,19 +1,10 @@
 import React, { PureComponent, Fragment } from 'react'
 import { Orders } from '../../../api/orders.mongon'
 import { withTracker } from 'meteor/react-meteor-data'
-import {
-  Table, 
-  Card, 
-  Button,
-  Tag,
-  Progress,
-  Row,
-  Icon,
-  Menu,
-  Col,
-  Avatar,
-  Form
-} from 'antd'
+import Form from 'antd/lib/form';
+import Menu from 'antd/lib/menu';
+import Col from 'antd/lib/col';
+import Row from 'antd/lib/row';
 import moment from 'moment';
 
 import Summary from './order/Summary'

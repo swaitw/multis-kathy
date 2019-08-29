@@ -1,9 +1,17 @@
 import React, { PureComponent} from 'react'
-import { Layout,Row,Col} from 'antd'
+import Row from 'antd/lib/row'
+import Col from 'antd/lib/col'
+import Layout from 'antd/lib/layout'
 import { Link } from 'react-router-dom'
 import { Meteor } from 'meteor/meteor';
 import styled from 'styled-components';
 import Header from './Header'
+// if(Meteor.isClient){
+//   import 'antd/lib/layout/style/index'
+//   import 'antd/lib/row/style/index'
+//   import 'antd/lib/col/style/index'
+//  }
+
 // const css = getAntCsses(['layout'])
 const { Header:HeaderWrapper, Content, Footer} =  Layout
 

@@ -1,6 +1,6 @@
 import Loadable from 'react-loadable'
 import React,{Fragment} from 'react'
-import { Spin } from 'antd';
+import Spin from 'antd/lib/spin';
 const loadComp = ({component,initData})=>{
   const Loading=()=>{
     return(<Spin style={{position:"absolute",bottom:'50%',left:'50%',transform: 'translateX(-50%)'}}/>)

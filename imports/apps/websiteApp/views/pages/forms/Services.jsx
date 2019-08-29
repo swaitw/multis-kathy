@@ -1,12 +1,10 @@
 import React, { PureComponent, Fragment, useState } from 'react'
-import {
-  Form, 
-  Input,
-  Card,
-  Row,
-  Col,
-  Button
-} from 'antd'
+import Card from 'antd/lib/card';
+import Input from 'antd/lib/input';
+import Form from 'antd/lib/form';
+import Row from 'antd/lib/row';
+import Col from 'antd/lib/col';
+import Button from 'antd/lib/button';
 // import {toMoneyStr} from '../../../../../../imports/lib/common/formatedText'
 import { toMoneyStr } from '../../../../../lib/common/formatedText'
 const { Item:FormItem} = Form

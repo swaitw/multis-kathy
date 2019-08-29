@@ -1,11 +1,6 @@
 import React, { useState, Fragment,useEffect, Component, createRef } from 'react';
-import ReactDOM from 'react-dom';
-import {
-  Card, Button, Spin,message
-} from 'antd'
-import CompanyInfo from './companyfolder/CompanyInfo'
-import PageLayout from './companyfolder/PageLayout'
-import { Meteor } from 'meteor/meteor';
+import Card from 'antd/lib/card';
+import Spin from 'antd/lib/spin';
 import { PDFViewer,Document } from '@react-pdf/renderer';
 import DocumentLayout from './companyfolder/Document'
 import CompanyInfoPdf from './companyfolder/CompanyInfo.pdf';

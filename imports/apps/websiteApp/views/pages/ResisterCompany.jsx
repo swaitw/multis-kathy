@@ -1,14 +1,10 @@
 import React, { PureComponent} from 'react';
-import {
-  Card,
-  Form,
-  Row,
-  Col,
-  Checkbox,
-  InputNumber,
-  Modal,
-  Spin
-} from 'antd'
+import Card from 'antd/lib/card';
+import Modal from 'antd/lib/modal';
+import Spin from 'antd/lib/spin';
+import Form from 'antd/lib/form';
+import Row from 'antd/lib/row';
+import Col from 'antd/lib/col';
 import MultiPageForm from '../../../../ui/form/MultiPageForm';
 import PersonalDeatil from './forms/PersonalDetail'
 import CompanyDetails from './forms/CompanyDetails'

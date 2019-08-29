@@ -11,17 +11,12 @@ import clearFormates from './utils/clearformates'
 import { insertImage } from './utils/images'
 import {insertLink} from './utils/links'
 import { insertTable, insertRow, insertColumn, removeTable, removeRow, removeColumn } from './utils/table'
-import {
-  Button,
-  Row,
-  Col,
-  Radio, 
-  Form,
-  Input,
-  Modal,
-  Tooltip,
-  Popover
-} from 'antd'
+import Button from 'antd/lib/button';
+import Form from 'antd/lib/form';
+import Input from 'antd/lib/input';
+import Radio from 'antd/lib/radio';
+import Modal from 'antd/lib/modal';
+import Popover from 'antd/lib/popover';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBold,faItalic,faUnderline,faAlignLeft,faAlignCenter,
   faAlignRight,faAlignJustify,faQuoteRight,faCode,faListOl,faList,

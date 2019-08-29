@@ -1,14 +1,12 @@
 import React, { PureComponent, Fragment } from 'react'
-import {
-  Form, 
-  Input,
-  Card,
-  Row,
-  Col,
-  Checkbox,
-  InputNumber,
-  Button
-} from 'antd'
+import InputNumber from 'antd/lib/input-number';
+import Card from 'antd/lib/card';
+import Input from 'antd/lib/input';
+import Checkbox from 'antd/lib/checkbox';
+import Form from 'antd/lib/form';
+import Row from 'antd/lib/row';
+import Col from 'antd/lib/col';
+import Button from 'antd/lib/button';
 const { Item:FormItem} = Form
 
 const Shareholders =(props)=>{

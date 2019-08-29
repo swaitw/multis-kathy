@@ -1,12 +1,8 @@
 import React ,{useState, PureComponent}from 'react'
-import {
-  Card,
-  Upload,
-  Form,
-  Input,
-  Button,
-  Icon
-}from 'antd'
+import Form from 'antd/lib/form';
+import Input from 'antd/lib/input';
+import Button from 'antd/lib/button';
+import Card from 'antd/lib/card';
 import FileUpload from '../form/filesUpload/Upload'
 const { Item:FormItem } = Form
 

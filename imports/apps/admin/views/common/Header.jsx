@@ -1,5 +1,6 @@
 import React, { PureComponent} from 'react'
-import {Row,Col} from 'antd'
+import Row from 'antd/lib/row';
+import Col from 'antd/lib/col';
 import { Meteor } from 'meteor/meteor';
 import styled from 'styled-components';
 import PrimaryMenu from '../menus/PrimaryMenu'

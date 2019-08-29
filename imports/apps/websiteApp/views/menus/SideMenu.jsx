@@ -1,7 +1,12 @@
 import React, { PureComponent} from 'react';
 import { Link,withRouter } from 'react-router-dom'
 import Menu from 'antd/lib/menu';
+
 import styled from 'styled-components';
+import { Meteor } from 'meteor/meteor';
+// if(Meteor.isClient){
+//   import 'antd/lib/menu/style/index'
+// }
 const {Item:MenuItem,ItemGroup:MenuGroup,SubMenu} = Menu
 // const css = getAntCsses(['menu'])
 const menus = [

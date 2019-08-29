@@ -1,11 +1,9 @@
 import React,{ PureComponent } from 'react'
-import {
-  Input,
-  InputNumber,
-  Checkbox,
-  Select,
-  Radio
-} from 'antd'
+import Input from 'antd/lib/input';
+import InputNumber from 'antd/lib/input-number';
+import Checkbox from 'antd/lib/checkbox';
+import Select from 'antd/lib/select';
+import Radio from 'antd/lib/radio';
 
 const { TextArea } = Input
 const { Option } = Select

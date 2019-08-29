@@ -1,13 +1,11 @@
 import React, { PureComponent } from 'react';
 import { withTracker } from 'meteor/react-meteor-data'
-import {
-  Card,
-  Row,
-  Col,
-  Input,
-  Form,
-  Button
-} from 'antd'
+import Card from 'antd/lib/card';
+import Row from 'antd/lib/row';
+import Col from 'antd/lib/col';
+import Form from 'antd/lib/form';
+import Button from 'antd/lib/button';
+import Input from 'antd/lib/input';
 import { Meteor } from 'meteor/meteor';
 let Editor={}
 if(Meteor.isClient){

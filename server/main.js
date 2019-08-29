@@ -1,5 +1,4 @@
 import '../imports/api/index'
-import './initRouters'
 import './restful/index.api'
 import React from 'react';
 import { renderToNodeStream } from 'react-dom/server';
@@ -12,6 +11,8 @@ import { ServerStyleSheet } from "styled-components"
 import { getCssStr } from "../imports/lib/css/getAntCss"
 import lessToCss from '../imports/lib/css/lessToCss'
 import styled from 'styled-components'
+
+// import '../client/theme.import.less'
 
 console.log(Meteor.absolutePath,'rootPath')
 const Loading=()=>{
@@ -43,22 +44,13 @@ const App = Loadable.Map({
     onPageLoad(async(sink) => {
       const sheet = new ServerStyleSheet();
       const context = {};
-      // const mainStyle = getCssStr({path:`${process.env['PWD']}/client/main.css`});
-      // const antStyle=getCssStr({path:`${process.env['PWD']}/node_modules/antd/lib/style/index.css`});
-      // const antStyle=getCssStr({path:`${process.env['PWD']}/public/css/antd.min.css`});
-      const antStyle=await Assets.getText('css/antd.min.css')
-      const StyledApp = styled((props)=>{
-        const {className} = props
-        return (
-          <StaticRouter location={sink.request.url} context={context} className={`${className}`}>
-            <App />
-          </StaticRouter>
-        )
-      })``
+      const antStyle=await Assets.getText('css/theme.css')
       // sink.appendToHead(`<link rel=""stylesheet"" type="text/css" href="${Meteor.absoluteUrl("/css/antd.min.css")}">`);
       sink.appendToHead(`<style>${antStyle}</style>`);
         sink.renderIntoElementById('app',sheet.interleaveWithNodeStream(renderToNodeStream(sheet.collectStyles(
-          <StyledApp />
+          <StaticRouter location={sink.request.url} context={context} >
+            <App />
+          </StaticRouter>
         ))));
     });
   })

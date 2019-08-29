@@ -8,39 +8,41 @@
     "visualize": "meteor --production --extra-packages bundle-visualizer"
   },
   "dependencies": {
-    "@babel/core": "^7.4.5",
+    "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-decorators": "^7.4.4",
-    "@babel/runtime": "^7.3.4",
-    "@ckeditor/ckeditor5-build-classic": "^12.2.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.18",
-    "@fortawesome/free-brands-svg-icons": "^5.8.2",
-    "@fortawesome/free-solid-svg-icons": "^5.8.2",
+    "@babel/runtime": "^7.5.5",
+    "@ckeditor/ckeditor5-build-classic": "^12.3.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.21",
+    "@fortawesome/free-brands-svg-icons": "^5.10.1",
+    "@fortawesome/free-solid-svg-icons": "^5.10.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
-    "@react-pdf/renderer": "^1.6.2",
-    "antd": "^3.19.3",
-    "autoprefixer": "^9.5.1",
-    "babel-plugin-styled-components": "^1.10.0",
+    "@react-pdf/renderer": "^1.6.3",
+    "antd": "^3.22.1",
+    "autoprefixer": "^9.6.1",
+    "babel-plugin-import": "^1.12.0",
+    "babel-plugin-styled-components": "^1.10.6",
     "babel-polyfill": "^6.26.0",
     "bcrypt": "^3.0.6",
     "immutable": "^4.0.0-rc.12",
     "indexof": "0.0.1",
-    "js-beautify": "^1.10.0",
+    "js-beautify": "^1.10.2",
     "lodash": "^4.17.11",
     "meteor-node-stubs": "^0.4.1",
-    "minify": "^4.1.1",
+    "minify": "^4.1.3",
     "moment": "^2.24.0",
     "postcss-clean": "^1.1.0",
-    "postcss-js": "^2.0.1",
-    "react": "^16.8.0",
+    "postcss-js": "^2.0.2",
+    "react": "^16.9.0",
     "react-color": "^2.17.3",
     "react-dom": "^16.5.0",
     "react-loadable": "^5.5.0",
-    "react-router-dom": "^5.0.0",
-    "slate": "^0.47.3",
-    "slate-html-serializer": "^0.8.5",
-    "slate-react": "^0.22.3",
+    "react-router-dom": "^5.0.1",
+    "slate": "^0.47.4",
+    "slate-html-serializer": "^0.8.6",
+    "slate-react": "^0.22.4",
     "slate-schema-violations": "^0.1.39",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.3.2",
+    "tailwindcss": "^1.1.0"
   },
   "meteor": {
     "mainModule": {
@@ -49,10 +51,18 @@
     },
     "testModule": "tests/main.js"
   },
+  "postcss": {
+    "plugins": {
+      "postcss-import": {},
+      "tailwindcss": {}
+    }
+  },
   "devDependencies": {
     "less": "^3.9.0",
-    "postcss": "^7.0.16",
+    "postcss": "^6.0.23",
+    "postcss-import": "^12.0.1",
     "postcss-less": "^3.1.4",
-    "postcss-less-engine": "^0.6.2"
+    "postcss-less-engine": "^0.6.2",
+    "postcss-load-config": "^1.2.0"
   }
 }

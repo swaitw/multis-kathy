@@ -1,0 +1,15 @@
+{
+  "presets": [
+    "meteor"],
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties", { "loose": true }],
+    // ["import", { "libraryName": "antd", "libraryDirectory": "lib"}, "ant"],
+    // ["import", { "libraryName": "antd", "style": "css" }]
+  ],
+  // "env": {
+  //   "development": {
+  //     "plugins": ["react-hot-loader/babel"]
+  //   }
+  // }
+}

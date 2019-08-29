@@ -1,15 +1,13 @@
 import React ,{useState} from 'react';
 import { withTracker } from 'meteor/react-meteor-data'
-import { 
-  Card,
-  Row,
-  Col,
-  Form,
-  Input,
-  Select,
-  Button,
-  Table
-} from 'antd';
+import Card from 'antd/lib/card';
+import Input from 'antd/lib/input';
+import Form from 'antd/lib/form';
+import Row from 'antd/lib/row';
+import Col from 'antd/lib/col';
+import Button from 'antd/lib/button';
+import Table from 'antd/lib/table';
+import Select from 'antd/lib/select';
 import { Meteor } from 'meteor/meteor';
 import { Categories } from '../../../api/categories.mongo';
 

@@ -1,19 +1,12 @@
 import React,{Component,useState, PureComponent, Fragment, createRef,useEffect} from 'react';
-import {
-  Button,
-  Icon,
-  Row,
-  Dropdown,
-  Select,
-  AutoComplete,
-  Input,
-  Form,
-  Modal,
-  Card,
-  Upload,
-  Popover,
-  Radio,
-} from 'antd'
+import Button from 'antd/lib/button';
+import Row from 'antd/lib/row';
+import Select from 'antd/lib/select';
+import AutoComplete from 'antd/lib/auto-complete';
+import Input from 'antd/lib/input';
+import Radio from 'antd/lib/radio';
+import Modal from 'antd/lib/modal';
+import Popover from 'antd/lib/popover';
 const { Group:RadioGroup,Button:RadioButton } = Radio
 import { SketchPicker } from 'react-color';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

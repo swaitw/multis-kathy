@@ -1,12 +1,7 @@
 import React, { PureComponent, Children } from 'react';
 import { Link } from 'react-router-dom'
-import {
-  Row,
-  Col,
-  Card,
-  Button
-}from 'antd'
-
+import Card from 'antd/lib/card';
+import Button from 'antd/lib/button';
 const Layout = (props)=>{
   const {children} = props
   return(

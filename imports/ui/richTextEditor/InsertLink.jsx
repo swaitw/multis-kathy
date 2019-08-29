@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
-import {
-  Card,
-  Form, Input, Select,Button
-} from 'antd'
-
+import Card from 'antd/lib/card';
+import Form from 'antd/lib/form';
+import Input from 'antd/lib/input';
+import Select from 'antd/lib/select';
+import Button from 'antd/lib/button';
 const { Item:FormItem } = Form
 const { Option } =  Select
 

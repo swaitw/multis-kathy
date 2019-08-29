@@ -1,12 +1,10 @@
 import React, {PureComponent} from 'react'
-import {
-  Form, 
-  Input,
-  Card,
-  Button,
-  Row,
-  message
-} from 'antd'
+import Card from 'antd/lib/card';
+import Input from 'antd/lib/input';
+import Form from 'antd/lib/form';
+import Row from 'antd/lib/row';
+import message from 'antd/lib/message';
+import Button from 'antd/lib/button';
 
 const { Item:FormItem } = Form
 const { TextArea} = Input
